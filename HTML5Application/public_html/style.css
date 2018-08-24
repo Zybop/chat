@@ -1,0 +1,23 @@
+.inputWrap {
+    display: inline-flex;
+    width: 100%;
+}
+
+.chatWindow {
+    background-color: #f3f3f305
+}
+
+li {
+    background-color: #5698e425;
+    margin: 5px;
+    padding: 5px;
+    display: inline-block;
+}
+
+.textBobble {
+    border-top-left-radius: 1.25rem!important;
+    border-bottom-left-radius: 1.25rem!important;
+    border-top-right-radius: 1.25rem!important;
+    border-bottom-right-radius: 1.25rem!important;
+    padding: 6px;
+}
