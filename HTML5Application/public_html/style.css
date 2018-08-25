@@ -1,23 +1,101 @@
-.inputWrap {
-    display: inline-flex;
-    width: 100%;
-}
-
-.chatWindow {
-    background-color: #f3f3f305
-}
-
-li {
-    background-color: #5698e425;
-    margin: 5px;
-    padding: 5px;
-    display: inline-block;
-}
-
-.textBobble {
-    border-top-left-radius: 1.25rem!important;
-    border-bottom-left-radius: 1.25rem!important;
-    border-top-right-radius: 1.25rem!important;
-    border-bottom-right-radius: 1.25rem!important;
-    padding: 6px;
-}
+    .inputWrap {
+        display: inline-flex;
+        width: 100%;
+    }
+    
+    .chatWindow {
+        background-color: #f3f3f305
+    }
+    
+    li {
+        background-color: #5698e425;
+        margin: 5px;
+        padding: 5px;
+        display: inline-block;
+    }
+    
+    p {
+        line-height: 1.28;
+        clear: both;
+    }
+    
+    .receiverTextBobble {
+        border-top-left-radius: 1.25rem !important;
+        border-bottom-left-radius: 1.25rem !important;
+        border-top-right-radius: 1.25rem !important;
+        border-bottom-right-radius: 1.25rem !important;
+        padding: 6px 12px;
+        background-color: deepskyblue;
+        float: right;
+        min-width: 50px;
+        color: #fff;
+        max-width: 70%;
+        border: 1.49px solid white!important;
+        word-wrap: break-word;
+        margin-right: 5px;
+    }
+    
+    .contactTextBobble {
+        border-top-left-radius: 1.25rem !important;
+        border-bottom-left-radius: 1.25rem !important;
+        border-top-right-radius: 1.25rem !important;
+        border-bottom-right-radius: 1.25rem !important;
+        padding: 6px 12px;
+        background-color: whitesmoke;
+        float: left;
+        min-width: 50px;
+        max-width: 70%;
+        border: 1.49px solid black;
+        word-wrap: break-word;
+    }
+    
+    button {
+        border-style: solid;
+        border-width: 2px;
+        border-color: black;
+        cursor: pointer;
+    }
+    
+    .contactProfile {
+        width: 100%;
+        height: 60px;
+        line-height: 2em;
+        color: #fff;
+    }
+    
+    p.contactProfile {
+        clear: none;
+    }
+    
+    img {
+        width: 50px;
+        border-radius: 50%;
+        float: left;
+        margin: 9px 12px 0 9px;
+        max-height: 28px;
+        max-width: 28px;
+    }
+    /*Scrollbar*/
+    /* width */
+    
+     ::-webkit-scrollbar {
+        width: 8px;
+    }
+    /* Track */
+    
+     ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+    }
+    /* Handle */
+    
+     ::-webkit-scrollbar-thumb {
+        background: #f8f9fa59;
+        border-radius: 10px;
+        border: 1px solid black;
+    }
+    /* Handle on hover */
+    
+     ::-webkit-scrollbar-thumb:hover {
+        background: whitesmoke;
+    }

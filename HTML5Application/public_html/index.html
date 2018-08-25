@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css'>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -14,18 +15,25 @@
 </head>
 
 <body>
-    <div class="container bg-danger">
+    <div class="container bg-secondary">
         <div class="row">
             <div class="col-12 p-3"></div>
         </div>
         <!-- Chat window-->
-        <div class="row bg-primary">
+        <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
                 <div>
                     <div>
+                        <div class="contactProfile">
+                            <img src="user.jpg" alt="User picture">
+                            <p class="contactProfile">Active contact name here</p>
+                        </div>
                         <div class="chatWindow" id="chatWindow" style="height:400px; overflow-y: auto;">
-                            <ol class="chatList" id="chatListID"></ol>
+                            <ol class="chatList" id="chatListID">
+                                <p class="contactTextBobble">Some text.</p>
+                                <p class="contactTextBobble">Some more text. So that you can see if it wraps the lines without going over 70% width</p>
+                            </ol>
                         </div>
                     </div>
                 </div>
@@ -41,14 +49,13 @@
                 <div class="">
                     <form class="inputForm inputWrap">
                         <input class="form-control" id="textInputID" autocomplete="off" placeholder="Type a message" />
-                        <button id="sendButton" type="button" class="btn btn-default" onclick="message()">Send</button>
+                        <button id="sendButton" type="button" class="btn btn-default fa fa-paper-plane" onclick="sendMessage()"></button>
+
+                        <button id="attachButton" type="button" class="btn btn-default fa fa-paperclip attachment" onclick="sendMessage()"></button>
                     </form>
                 </div>
             </div>
-
-            <div class="col-sm-2 p-3">
-
-            </div>
+            <div class="col-sm-2 p-3"></div>
         </div>
         <script>
             onEnter();
