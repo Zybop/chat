@@ -15,50 +15,51 @@
 </head>
 
 <body>
-    <div class="container bg-secondary">
-        <div class="row">
-            <div class="col-12 p-3"></div>
-        </div>
-        <!-- Chat window-->
-        <div class="row">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-8">
-                <div>
+        <!-- Row above chat -->
+        <div class="container-fluid bg-secondary">
+            <div class="row">
+                <div class="col-12 p-3"></div>
+            </div>
+            <!-- Chat window-->
+            <div class="row">
+                <div class="col-sm-8 container">
                     <div>
-                        <div class="contactProfile">
-                            <img src="user.jpg" alt="User picture">
-                            <p class="contactProfile">Active contact here</p>
-                        </div>
-                        <div class="chatWindow rounded" id="chatWindow" style="height:400px; overflow-y: auto;">
-                            <ol class="chatList" id="chatListID">
-                                <p class="contactTextBobble">Some text.</p>
-                                <p class="contactTextBobble">Some more text. So that you can see if it wraps the lines without going over 70% width</p>
-                            </ol>
+                        <div>
+                            <div class="contactProfile sticky-top bg-secondary ">
+                                <img src="user.png" alt="User picture">
+                                <p class="contactProfile">Active contact here</p>
+                            </div>
+
+                            <div class="chatWindow rounded" id="chatWindow">
+                                <ol class="chatList" id="chatListID">
+                                    <p class="contactTextBobble">Some text.</p>
+                                    <p class="contactTextBobble">Some more text. So that you can see if it wraps the lines without going over 70% width</p>
+                                </ol>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4"></div>
-        </div>
-        <!-- This is the box below the chat window-->
-        <div class="row">
-
-            <div class="col-sm-2"></div>
-
-            <div class="col-sm-8 p-3">
-                <div class="">
-                    <form class="inputForm inputWrap">
-                        <input class="form-control" id="textInputID" autocomplete="off" placeholder="Type a message" />
-                        <button id="sendButton" type="button" class="btn btn-default fa fa-paper-plane" onclick="sendMessage()"></button>
-                        <button id="attachButton" type="button" class="btn btn-default fa fa-paperclip attachment" onclick="sendMessage()"></button>
-                    </form>
+            <!-- Row below the chat window-->
+            <div class="row">
+                <div class="col-8 p-3 container">
+                    <div class="inputDiv">
+                        <form class="inputForm inputWrap">
+                            <input class="form-control" id="textInputID" autocomplete="off" placeholder="Type a message" />
+                            <button id="sendButton" type="button" class="btn btn-default fa fa-paper-plane" onclick="sendMessage()"></button>
+                            <button id="attachButton" type="button" class="btn btn-default fa fa-paperclip attachment" onclick="sendMessage()"></button>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <div class="col-sm-2 p-3"></div>
         </div>
-        <script>
-            onEnter();
-        </script>
+
+
+    <script>
+        onEnter();
+    </script>
+
 </body>
 
 </html>
