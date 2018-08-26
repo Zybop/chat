@@ -29,7 +29,7 @@
                             <img src="user.jpg" alt="User picture">
                             <p class="contactProfile">Active contact name here</p>
                         </div>
-                        <div class="chatWindow" id="chatWindow" style="height:400px; overflow-y: auto;">
+                        <div class="chatWindow rounded" id="chatWindow" style="height:400px; overflow-y: auto;">
                             <ol class="chatList" id="chatListID">
                                 <p class="contactTextBobble">Some text.</p>
                                 <p class="contactTextBobble">Some more text. So that you can see if it wraps the lines without going over 70% width</p>
@@ -50,7 +50,6 @@
                     <form class="inputForm inputWrap">
                         <input class="form-control" id="textInputID" autocomplete="off" placeholder="Type a message" />
                         <button id="sendButton" type="button" class="btn btn-default fa fa-paper-plane" onclick="sendMessage()"></button>
-
                         <button id="attachButton" type="button" class="btn btn-default fa fa-paperclip attachment" onclick="sendMessage()"></button>
                     </form>
                 </div>
