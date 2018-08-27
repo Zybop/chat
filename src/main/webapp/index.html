@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Chat</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css'>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+        <link rel="stylesheet" href="style.css" type='text/css'>
+    </head>
+
+    <body>
+        <div class="container-fluid bg-secondary">
+            <!-- Chat window-->
+            <div class="row">
+                <div class="contactList d-flex col-3">
+                    <ul class="d-flex contacts" id="contacts">
+                        <li>contact1</li>
+                        <li>contact2</li>
+                        <li>contact3</li>
+                    </ul>
+                    <form class="contactForm inputForm inputWrap m-2">
+                        <input id="contactInputID" placeholder="Add contact" />
+                        <button class="btn btn-default fas fa-user-plus" type="button" onclick="addContact()"></button>
+                    </form>
+                </div>
+                <div class="col-sm-8 container">
+                    <div>
+                        <div>
+                            <div class="contactProfile sticky-top bg-secondary ">
+                                <img class="contactImg" src="user.png" alt="User picture">
+                                <p class="contactProfile">Active contact here</p>
+                            </div>
+
+                            <div class="chatWindow rounded" id="chatWindow">
+                                <ul>
+                                    <li class="chatList" id="chatListID">
+                                    <p class="contactTextBobble">Some text.</p>
+                                    <p class="contactTextBobble">Some more text. So that you can see if it wraps the lines without going over 70% width</p>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="inputDiv">
+                        <form class="inputForm inputWrap">
+                            <input class="form-control" id="textInputID" autocomplete="off" placeholder="Type a message" />
+                            <button id="sendButton" type="button" class="btn btn-default fa fa-paper-plane" onclick="sendMessage()"></button>
+                            <button id="attachButton" type="button" class="btn btn-default fa fa-paperclip attachment" onclick="sendMessage()"></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="chat.js"></script>
+
+        <script>
+                                onEnter();
+        </script>
+    </body>
+
+</html>
