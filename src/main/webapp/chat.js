@@ -1,3 +1,10 @@
+//Variable's
+
+var contactName = "";
+var chatArray = [];
+
+//Functions
+
 function sendMessage() {
     //create the elements
     var p = document.createElement("p");
@@ -69,9 +76,45 @@ function addContact() {
     var contactNode = document.createTextNode(contact);
 
     if (contactNode.length >= 1) {
-        console.log('adding contact' + contactNode.value);
+        console.log('adding contact ' + contactNode.textContent);
         listItem.appendChild(contactNode);
         document.getElementById('contacts').appendChild(listItem);
+
+        //Eventlistener for clicking on the contacts:
+        listItem.addEventListener("click", function e() {
+            console.log("clicking on " + listItem.innerHTML)
+            contactName = listItem.innerHTML;
+            console.log("Contact name is now: " + contactName);
+            getContactChat();
+        });
     }
     contactInputID.value = '';
+}
+
+function getContactChat() {
+    //Get the element
+    var activeContact = document.getElementById("activeContact");
+    //Get the contact name
+    var name = contactName;
+    //Change the text in the activeContact element to the contact name
+    activeContact.innerHTML = name;
+
+    //Changing the chat bobbles:
+
+    //Get the element and empty it
+    var chatList = document.getElementById("chatListID");
+    chatList.innerHTML = "";
+
+    //Create a new p element
+    var p = document.createElement("p");
+
+    //Add a class to the new p element
+    p.classList.add('contactTextBobble');
+
+    //Create a text node
+    var textNode = document.createTextNode("Welcome to " + name + "'s " + "chat window");
+
+    p.appendChild(textNode);
+    document.getElementById("chatListID").appendChild(p)
+
 }

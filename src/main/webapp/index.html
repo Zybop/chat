@@ -19,11 +19,8 @@
     <div class="bg-secondary">
         <!-- Chat window-->
         <div class="row">
-            <div class="containerFlex flexbox-1 contactList p-2">
-                <ul class=" contacts form-control mt-4 mb-1" id="contacts">
-                    <li>contact1</li>
-                    <li>contact2</li>
-                    <li>contact3</li>
+            <div class="containerFlex flexbox-1 p-2">
+                <ul class="contactList mt-4 mb-1" id="contacts">
                 </ul>
                 <form class="inputForm inputWrap">
                     <input class="form-control" id="contactInputID" placeholder="Add contact" autocomplete="off" />
@@ -33,15 +30,17 @@
             </div>
 
             <div class="containerFlex flexbox-2 p-2">
-                <div class="chatWindow rounded" id="chatWindow">
-                    <div class="contactProfile sticky-top bg-secondary ">
-                        <img class="contactImg" src="user.png" alt="User picture">
-                        <p class="contactProfile">Active contact here</p>
-                    </div>
-                    <ul>
+                <div class="chatWindow rounded">
+
+                    <ul class="mt-4" id="chatWindowID">
+                        <li class="contactProfile sticky-top bg-secondary ">
+                            <img class="contactImg" src="user.png" alt="User picture">
+                            <p id="activeContact" class="contactProfile">Active contact here</p>
+                        </li>
                         <li class="chatList" id="chatListID">
-                            <p class="contactTextBobble">Some text.</p>
-                            <p class="contactTextBobble">Some more text. So that you can see if it wraps the lines without going over 70% width</p>
+                            <p class="contactTextBobble">Hi! Welcome to ChatApp9000</p>
+                            <p class="contactTextBobble">Add a contact in bottom-left corner.</p>
+                            <p class="contactTextBobble">After that you can click on your new contact, who should appear on the left side.<br> This will open up a new chat with your new friend.</p>
                         </li>
                     </ul>
                     <form class="inputForm inputWrap ">
@@ -56,7 +55,7 @@
         </div>
     </div>
 
-    <script src="chat.js"></script>
 </body>
+<script src="chat.js"></script>
 
 </html>
