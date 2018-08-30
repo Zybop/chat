@@ -24,6 +24,8 @@ function sendMessage() {
         isPicture = true;
     } else if (textInputValue.includes(".gif")) {
         isPicture = true;
+    } else if (textInputValue.includes(".svg")) {
+        isPicture = true;
     }
     if (isPicture) {
         var img = document.createElement("img");

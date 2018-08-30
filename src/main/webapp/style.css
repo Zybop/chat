@@ -30,16 +30,6 @@ html body {
     height: 100%;
 }
 
-
-/* .contacts {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
-    border-radius: 0.25rem;
-} */
-
 .addContactButton {
     width: 5em;
     border-radius: 0.25rem;
@@ -68,6 +58,16 @@ ul {
 
 li {
     display: block;
+}
+
+.chatList a {
+    color: black;
+    clear: both;
+    margin-bottom: 1em;
+}
+
+.chatList img {
+    clear: both;
 }
 
 .contactList li {
