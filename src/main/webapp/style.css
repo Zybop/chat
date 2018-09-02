@@ -1,0 +1,293 @@
+html body {
+    max-height: 100vh;
+    min-height: 100vh;
+    height: 100%;
+}
+
+div {
+    z-index: 1;
+}
+
+.row {
+    margin: 0;
+    height: 100vh;
+    min-height: 100vh;
+}
+
+.containerFlex {
+    display: flex;
+}
+
+.flexbox-1 {
+    flex: 1;
+    align-self: flex-start;
+    min-height: 100%;
+    height: 100%;
+    flex-direction: column;
+    max-height: 100%;
+    max-width: 30%;
+}
+
+.flexbox-2 {
+    flex: 2;
+    padding-left: 10px;
+    flex-direction: column;
+    height: 100%;
+    max-height: 100%;
+    max-width: 70%;
+}
+
+.addContactButton {
+    width: 5em;
+    border-radius: 0.25rem;
+    margin: 2em;
+}
+
+.inputWrap {
+    display: inline-flex;
+    width: 100%;
+}
+
+.chatWindow {
+    height: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+ul {
+    overflow-y: auto;
+    max-height: 100%;
+    min-height: 89%;
+    height: 100%;
+    padding-left: 0;
+}
+
+li {
+    display: block;
+}
+
+.chatList a {
+    color: black;
+    clear: both;
+    margin-bottom: 1em;
+}
+
+.chatList img {
+    clear: both;
+}
+
+.contactList li {
+    background-color: whitesmoke;
+    border-radius: 0.25rem;
+    line-height: 4em;
+    border: 1px solid gray;
+    padding-left: 5px;
+}
+
+p {
+    padding-left: 0;
+    line-height: 1.28;
+    clear: both;
+}
+
+.footer {
+    flex: 0 0 100% !important;
+}
+
+.receiverTextBobble {
+    border-radius: 1.25rem !important;
+    padding: 6px 12px;
+    background-color: deepskyblue;
+    float: right;
+    min-width: 50px;
+    color: #fff;
+    max-width: 70%;
+    border: 1.49px solid white!important;
+    word-wrap: break-word;
+    margin-right: 5px;
+}
+
+.receiverImgBobble {
+    max-height: 50%;
+    max-width: 70%;
+    float: right;
+    margin-bottom: 1rem;
+}
+
+.contactTextBobble {
+    border-radius: 1.25rem !important;
+    padding: 6px 12px;
+    background-color: whitesmoke;
+    float: left;
+    min-width: 50px;
+    max-width: 70%;
+    border: 1.49px solid black;
+    word-wrap: break-word;
+    margin-bottom: 1rem;
+}
+
+button {
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    cursor: pointer;
+}
+
+.contactProfile {
+    line-height: 3em;
+    color: #fff;
+}
+
+p.contactProfile {
+    clear: none;
+}
+
+p.active {
+    background-color: palegreen !important;
+}
+
+.contactImg {
+    width: 50px;
+    border-radius: 50%;
+    float: left;
+    margin: 9px 12px 0 9px;
+    max-height: 28px;
+    max-width: 28px;
+}
+
+#newChatButton {
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+
+/*Scrollbar*/
+
+
+/* width */
+
+ ::-webkit-scrollbar {
+    width: 8px;
+}
+
+
+/* Track */
+
+ ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 9px;
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
+    background: #f8f9fa59;
+    border-radius: 3px;
+    border: 0.5px solid black;
+}
+
+
+/* Handle on hover */
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: whitesmoke;
+}
+
+
+/* The Modal (background) */
+
+.modal {
+    z-index: 9999999999;
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: hidden;
+    /* Hidden scroll */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+
+/* Modal Content/Box */
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    overflow-y: auto;
+    height: 75%;
+    max-height: 75%;
+}
+
+#modal-list p {
+    background-color: #f8f9fa59;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%;
+    border-radius: 2rem;
+    cursor: pointer;
+}
+
+
+/* The Close Button */
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 1%;
+    font-size: xx-large;
+    z-index: 2;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.disabledButton:hover {
+    cursor: not-allowed !important;
+}
+
+.modalStartChatButton {
+    cursor: pointer;
+    position: fixed;
+    bottom: 16%;
+    right: 28%;
+    font-size: 3em;
+    border-radius: 50%;
+    border: 0;
+    padding: 0.5em;
+    z-index: 99999999;
+    background-color: springgreen;
+    color: white;
+}
+
+
+/* For small screens*/
+
+@media only screen and (max-width: 750px) {
+    .flexbox-1 {
+        display: none;
+    }
+    .flexbox-2 {
+        max-width: 100%;
+    }
+}

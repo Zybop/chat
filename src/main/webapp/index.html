@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Chat</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="style.css" type='text/css'>
+</head>
+
+<body>
+    <div class="bg-secondary">
+        <!-- Chat window-->
+        <div class="row">
+            <div class="containerFlex flexbox-1 p-2">
+                <div style="display: contents; ">
+                    <button id="newChatButton" class="btn btn-success btn-lg fas fa-plus" type="button" onclick="return startNewChat(this)"> New chat</button>
+                </div>
+                <ul class="contactList mb-1" id="contacts">
+                </ul>
+
+                <form class="inputForm inputWrap">
+                    <input class="form-control" id="contactInputID" placeholder="Add contact" autocomplete="off" />
+                    <button class="btn btn-default fas fa-user-plus" type="button" onclick="return addContact()"></button>
+                </form>
+
+            </div>
+
+            <div class="containerFlex flexbox-2 p-2">
+                <div class="chatWindow rounded">
+
+                    <ul id="chatWindowID">
+                        <li class="contactProfile sticky-top">
+                            <img class="contactImg" src="user.png" alt="User picture">
+                            <p id="activeContact" class="contactProfile">Active contact here</p>
+                        </li>
+                        <li class="chatList" id="chatListID">
+                            <p class="contactTextBobble">Hi! Welcome to ChatApp9000</p>
+                            <p class="contactTextBobble">Add a contact in bottom-left corner.</p>
+                            <p class="contactTextBobble">After that you can click on your new contact, who should appear on the left side.<br> This will open up a new chat with your new friend.</p>
+                        </li>
+                    </ul>
+                    <form class="inputForm inputWrap ">
+                        <input class="form-control" id="textInputID" autocomplete="off" placeholder="Type a message" />
+                        <button id="sendButton" type="button" class="btn btn-default fa fa-paper-plane" onclick="return sendMessage()"></button>
+                        <button id="attachButton" type="button" class="btn btn-default fa fa-paperclip attachment" onclick="return sendMessage()"></button>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id=modal-list></div>
+                <button id="modalStartChatButton" class="modalStartChatButton fas fa-plus" onclick="startGroupChat(contacts)"></button>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+<script src="chat.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</html>
