@@ -20,8 +20,7 @@
         <div class="row">
             <div class="containerFlex flexbox-1 p-2">
                 <div style="display: contents; ">
-                    <button id="myBtn" class="btn btn-success btn-lg fas fa-plus" style="cursor: pointer; border: 2px solid gainsboro;
-                    margin-bottom: 5px;" type="button" onclick="return startNewChat(this)"> New chat</button>
+                    <button id="newChatButton" class="btn btn-success btn-lg fas fa-plus" type="button" onclick="return startNewChat(this)"> New chat</button>
                 </div>
                 <ul class="contactList mb-1" id="contacts">
                 </ul>
@@ -64,7 +63,7 @@
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <div id=modal-list></div>
-
+                <button id="modalStartChatButton" class="modalStartChatButton fas fa-plus" onclick="startGroupChat(contacts)"></button>
             </div>
 
         </div>
@@ -72,5 +71,6 @@
 
 </body>
 <script src="chat.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </html>

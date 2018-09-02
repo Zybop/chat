@@ -1,11 +1,18 @@
-//Variable's
+//Variable's -------------------------------------------------------
 
 var contactName = "";
 var chatArray = [];
 var contactList = [];
+var activeContact = document.getElementById("activeContact"); // Get the active contact.
 
+// Const -----------------------------------------------------------
+const modal = document.getElementById('myModal'); // The modal
+const chatList = document.getElementById("chatListID"); // The chat list window
 
-// Eventlisteners
+// Debug -----------------------------------------------------------
+const DEBUG = true;
+
+// Eventlisteners --------------------------------------------------
 
 // Checks if Enter is pushed, and sends the message if it is.
 document.querySelector('#textInputID').addEventListener('keypress', function(e) {
@@ -27,7 +34,7 @@ document.querySelector('#contactInputID').addEventListener('keypress', function(
     }
 });
 
-//Functions
+// Functions -----------------------------------------------------------
 
 // This function returns the event or element that the user clicked on.
 function getEventTarget(e) {
@@ -38,12 +45,18 @@ function getEventTarget(e) {
 //Opens a modal, where you can choose contacts.
 function startNewChat(e) {
 
+    // Check if there is contacts in the list.
     if (contactList.length <= 0) {
         disableButton(e);
+
+        if (DEBUG) {
+            console.log("Empty contact list");
+        }
+
+        // If there is no contacts in the list, show alert
+        swal("No contacts available", "Please add more contacts", "error");
+
     } else if (contactList.length >= 1) {
-        // Get the modal
-        var modal = document.getElementById('myModal');
-        activateButton(e);
 
         // When the user clicks on the button, open the modal
         modal.style.display = "block";
@@ -54,12 +67,14 @@ function startNewChat(e) {
             var p = document.createElement("p");
             p.innerHTML = element.textContent;
             document.getElementById("modal-list").appendChild(p);
-            console.log("Creating contact p element for: " + p.innerText);
+
+            if (DEBUG) {
+                console.log("Creating contact p element for: " + p.innerText);
+            }
         }
 
         // Get the <span> element that closes the modal
         var spanEl = document.getElementsByClassName("close")[0];
-
 
         // When the user clicks on <span> (x), close the modal
         spanEl.onclick = function() {
@@ -81,18 +96,22 @@ function startNewChat(e) {
         Object
             .keys(pEl)
             .map(i => pEl[i].addEventListener('click', function test() {
-                console.log("Clicking on contact number: " + i);
+                if (DEBUG) {
+                    console.log("Clicking on contact number: " + i);
+                }
+
                 // This function calls on it self when element is clicked.
                 pEl[i].onclick = function() {
-                    console.log("Toggle class 'active' on: " + pEl[i].innerHTML);
+                    if (DEBUG) {
+                        console.log("Toggle class 'active' on: " + pEl[i].innerHTML);
+                    }
+
                     pEl[i].classList.toggle("active");
                 }();
             }));
 
     } else {
-        // If there is no contacts in the list, show alert
-        console.log("Empty contact list");
-        alert("No contacts available")
+        activateButton(e);
     }
 }
 
@@ -164,18 +183,27 @@ function addContact() {
 
         // Only appends the node if there is 1 or more. Used to prevent empty contacts.
         if (contactNode.length >= 1) {
-            console.log('adding contact ' + contactNode.textContent);
+            if (DEBUG) {
+                console.log('adding contact ' + contactNode.textContent);
+            }
+
             listItem.appendChild(contactNode);
             document.getElementById('contacts').appendChild(listItem);
 
             //Activate the disabled button
-            activateButton(document.getElementById("myBtn"));
+            activateButton(document.getElementById("newChatButton"));
 
             //Eventlistener for clicking on the contacts:
             listItem.addEventListener("click", function e() {
-                console.log("clicking on " + listItem.innerHTML)
+                if (DEBUG) {
+                    console.log("clicking on " + listItem.innerHTML)
+                }
+
                 contactName = listItem.innerHTML;
-                console.log("Contact name is now: " + contactName);
+                if (DEBUG) {
+                    console.log("Contact name is now: " + contactName);
+                }
+
                 getContactChat();
             });
         }
@@ -184,9 +212,12 @@ function addContact() {
         contactInputID.value = '';
     } else {
         // If the imput is only space or break line, show alert message and remove input.
-        console.log("Invalid name");
+        if (DEBUG) {
+            console.log("Invalid name");
+        }
+
         contactInputID.value = '';
-        alert("Invalid Name");
+        swal("Invalid Name", "Please enter a valid name", "error");
     }
 
 }
@@ -203,10 +234,15 @@ function getContactChat() {
 
     // Changing the chat bobbles:
 
-    // Get the element and empty it
-    var chatList = document.getElementById("chatListID");
-    chatList.innerHTML = "";
+    // Empty the chat window 
+    chatList.innerHTML = ""
 
+    createNewChatWindow(name);
+
+
+}
+
+function createNewChatWindow(name) {
     // Create a new p element
     var p = document.createElement("p");
 
@@ -214,11 +250,67 @@ function getContactChat() {
     p.classList.add('contactTextBobble');
 
     // Create a text node
-    var textNode = document.createTextNode("Welcome to " + name + "'s " + "chat window");
+    var textNode = document.createTextNode(name + " joined the chat");
 
+    // Attach the textNode to the p element.
     p.appendChild(textNode);
-    document.getElementById("chatListID").appendChild(p)
 
+    // Attach the p element to the div called chatListID
+    document.getElementById("chatListID").appendChild(p)
+}
+
+// This function is called when the user has chosen one or more contacts from the modal.
+// It starts a chat with that/those contact(s).
+function startGroupChat(contact) {
+
+    chatList.innerHTML = "";
+    activeContact.innerHTML = "";
+    var pEl = document.getElementById("modal-list").getElementsByTagName("p");
+    if (DEBUG) {
+        console.log("Clearing the chat window and listing pEl: " + pEl);
+        console.log("Active contact is now: " + activeContact);
+    }
+    let x = 0;
+    // Loop through the p elements, to check if some of them has the class 'active'.
+    // If 'active' then add to chat window
+    for (let i = 0; i < pEl.length; i++) {
+        const element = pEl[i];
+
+        // Checking for class 'active' on each p element
+        if (pEl[i].classList.contains("active")) {
+
+            if (DEBUG) {
+                console.log("x: " + x);
+            }
+            ++x;
+
+            if (DEBUG) {
+                console.log("x is changed to: " + x);
+            }
+            createNewChatWindow(element.innerHTML);
+
+            if (DEBUG) {
+                console.log("P element: " + element)
+                console.log("element.innerHTML: " + element.innerHTML);
+            }
+
+            if (x >= 2) {
+                document.getElementById("activeContact").innerHTML += ", ";
+            }
+
+            // Change the text in the activeContact element to the contact name
+            document.getElementById("activeContact").innerHTML += element.innerHTML;
+
+
+            if (DEBUG) {
+                console.log("Active is changed to: " + element.innerHTML);
+            }
+
+        }
+    }
+
+    modal.style.display = "none";
+    removeChildren("modal-list");
 }
 
 // Function for removing all the list items in the modal

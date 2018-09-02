@@ -156,6 +156,11 @@ p.active {
     max-width: 28px;
 }
 
+#newChatButton {
+    width: 100%;
+    margin-bottom: 1em;
+}
+
 
 /*Scrollbar*/
 
@@ -261,14 +266,18 @@ p.active {
     cursor: not-allowed !important;
 }
 
-.startChatButton {
+.modalStartChatButton {
     cursor: pointer;
-    position: absolute;
-    bottom: 5%;
-    right: 5%;
-    font-size: 4em;
+    position: fixed;
+    bottom: 16%;
+    right: 28%;
+    font-size: 3em;
     border-radius: 50%;
+    border: 0;
+    padding: 0.5em;
     z-index: 99999999;
+    background-color: springgreen;
+    color: white;
 }
 
 
