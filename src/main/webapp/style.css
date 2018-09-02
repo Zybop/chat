@@ -4,6 +4,10 @@ html body {
     height: 100%;
 }
 
+div {
+    z-index: 1;
+}
+
 .row {
     margin: 0;
     height: 100vh;
@@ -21,13 +25,16 @@ html body {
     height: 100%;
     flex-direction: column;
     max-height: 100%;
+    max-width: 30%;
 }
 
 .flexbox-2 {
     flex: 2;
-    margin-left: 10px;
+    padding-left: 10px;
     flex-direction: column;
     height: 100%;
+    max-height: 100%;
+    max-width: 70%;
 }
 
 .addContactButton {
@@ -105,6 +112,7 @@ p {
     max-height: 50%;
     max-width: 70%;
     float: right;
+    margin-bottom: 1rem;
 }
 
 .contactTextBobble {
@@ -116,6 +124,7 @@ p {
     max-width: 70%;
     border: 1.49px solid black;
     word-wrap: break-word;
+    margin-bottom: 1rem;
 }
 
 button {
@@ -132,6 +141,10 @@ button {
 
 p.contactProfile {
     clear: none;
+}
+
+p.active {
+    background-color: palegreen !important;
 }
 
 .contactImg {
@@ -175,4 +188,97 @@ p.contactProfile {
 
  ::-webkit-scrollbar-thumb:hover {
     background: whitesmoke;
+}
+
+
+/* The Modal (background) */
+
+.modal {
+    z-index: 9999999999;
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: hidden;
+    /* Hidden scroll */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+
+/* Modal Content/Box */
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    overflow-y: auto;
+    height: 75%;
+    max-height: 75%;
+}
+
+#modal-list p {
+    background-color: #f8f9fa59;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%;
+    border-radius: 2rem;
+    cursor: pointer;
+}
+
+
+/* The Close Button */
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 1%;
+    font-size: xx-large;
+    z-index: 2;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.disabledButton:hover {
+    cursor: not-allowed !important;
+}
+
+.startChatButton {
+    cursor: pointer;
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    font-size: 4em;
+    border-radius: 50%;
+    z-index: 99999999;
+}
+
+
+/* For small screens*/
+
+@media only screen and (max-width: 750px) {
+    .flexbox-1 {
+        display: none;
+    }
+    .flexbox-2 {
+        max-width: 100%;
+    }
 }

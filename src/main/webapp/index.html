@@ -19,8 +19,13 @@
         <!-- Chat window-->
         <div class="row">
             <div class="containerFlex flexbox-1 p-2">
-                <ul class="contactList mt-4 mb-1" id="contacts">
+                <div style="display: contents; ">
+                    <button id="myBtn" class="btn btn-success btn-lg fas fa-plus" style="cursor: pointer; border: 2px solid gainsboro;
+                    margin-bottom: 5px;" type="button" onclick="return startNewChat(this)"> New chat</button>
+                </div>
+                <ul class="contactList mb-1" id="contacts">
                 </ul>
+
                 <form class="inputForm inputWrap">
                     <input class="form-control" id="contactInputID" placeholder="Add contact" autocomplete="off" />
                     <button class="btn btn-default fas fa-user-plus" type="button" onclick="return addContact()"></button>
@@ -31,8 +36,8 @@
             <div class="containerFlex flexbox-2 p-2">
                 <div class="chatWindow rounded">
 
-                    <ul class="mt-4" id="chatWindowID">
-                        <li class="contactProfile sticky-top bg-secondary ">
+                    <ul id="chatWindowID">
+                        <li class="contactProfile sticky-top">
                             <img class="contactImg" src="user.png" alt="User picture">
                             <p id="activeContact" class="contactProfile">Active contact here</p>
                         </li>
@@ -44,13 +49,24 @@
                     </ul>
                     <form class="inputForm inputWrap ">
                         <input class="form-control" id="textInputID" autocomplete="off" placeholder="Type a message" />
-                        <button id="sendButton" type="button" class="btn btn-default fa fa-paper-plane" onclick="sendMessage()"></button>
-                        <button id="attachButton" type="button" class="btn btn-default fa fa-paperclip attachment" onclick="sendMessage()"></button>
+                        <button id="sendButton" type="button" class="btn btn-default fa fa-paper-plane" onclick="return sendMessage()"></button>
+                        <button id="attachButton" type="button" class="btn btn-default fa fa-paperclip attachment" onclick="return sendMessage()"></button>
                     </form>
                 </div>
 
 
             </div>
+        </div>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id=modal-list></div>
+
+            </div>
+
         </div>
     </div>
 
