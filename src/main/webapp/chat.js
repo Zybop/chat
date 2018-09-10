@@ -15,7 +15,7 @@ const DEBUG = true;
 // Eventlisteners --------------------------------------------------
 
 // Checks if Enter is pushed, and sends the message if it is.
-document.querySelector('#textInputID').addEventListener('keypress', function(e) {
+document.querySelector('#textInputID').addEventListener('keypress', function (e) {
     var key = e.which || e.keyCode;
     if (key === 13) {
         sendMessage();
@@ -25,7 +25,7 @@ document.querySelector('#textInputID').addEventListener('keypress', function(e) 
 });
 
 // Checks if Enter is pushed, and adds a contact to the contactlist.
-document.querySelector('#contactInputID').addEventListener('keypress', function(e) {
+document.querySelector('#contactInputID').addEventListener('keypress', function (e) {
     var key = e.which || e.keyCode;
     if (key === 13) {
         addContact();
@@ -77,13 +77,13 @@ function startNewChat(e) {
         var spanEl = document.getElementsByClassName("close")[0];
 
         // When the user clicks on <span> (x), close the modal
-        spanEl.onclick = function() {
+        spanEl.onclick = function () {
             modal.style.display = "none";
             removeChildren("modal-list");
         }
 
         // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
+        window.onclick = function (event) {
             if (event.target == modal) {
                 modal.style.display = "none";
                 removeChildren("modal-list");
@@ -94,25 +94,36 @@ function startNewChat(e) {
         // If it is clicked, it toggle's a class on it (Add and remove it).
         const pEl = document.getElementById("modal-list").getElementsByTagName("p");
         Object
-            .keys(pEl)
-            .map(i => pEl[i].addEventListener('click', function test() {
-                if (DEBUG) {
-                    console.log("Clicking on contact number: " + i);
-                }
+                .keys(pEl)
+                .map(i => pEl[i].addEventListener('click', function test() {
+                        if (DEBUG) {
+                            console.log("Clicking on contact number: " + i);
+                        }
 
-                // This function calls on it self when element is clicked.
-                pEl[i].onclick = function() {
-                    if (DEBUG) {
-                        console.log("Toggle class 'active' on: " + pEl[i].innerHTML);
-                    }
+                        // This function calls on it self when element is clicked.
+                        pEl[i].onclick = function () {
+                            if (DEBUG) {
+                                console.log("Toggle class 'active' on: " + pEl[i].innerHTML);
+                            }
 
-                    pEl[i].classList.toggle("active");
-                }();
-            }));
+                            pEl[i].classList.toggle("active");
+                        }();
+                    }));
 
     } else {
         activateButton(e);
     }
+}
+
+function sendMesssageToServer(message) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            console.log("Message is updated.");
+        }
+    };
+    xhttp.open("POST", "http://localhost:8080/chatServer/api/service/sendMessage?message=");
+    xhttp.send(message);
 }
 
 //Creates a message, and checks if it is an img, and sends it.
@@ -123,7 +134,8 @@ function sendMessage() {
     var textNode = document.createTextNode(textInputValue);
     // Check if input is only space or break line. If not, continue.
     if (/\S/.test(textInputValue)) {
-
+        
+        sendMesssageToServer(textInputValue);
         //create the elements
         var p = document.createElement("p");
 
