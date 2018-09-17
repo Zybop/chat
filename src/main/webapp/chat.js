@@ -4,7 +4,8 @@ var contactName = "";
 var chatArray = [];
 var contactList = [];
 var activeContact = document.getElementById("activeContact"); // Get the active contact.
-
+var receiver = activeContact.innerText;
+var sender = "you";
 // Const -----------------------------------------------------------
 const modal = document.getElementById('myModal'); // The modal
 const chatList = document.getElementById("chatListID"); // The chat list window
@@ -80,7 +81,7 @@ function startNewChat(e) {
         spanEl.onclick = function () {
             modal.style.display = "none";
             removeChildren("modal-list");
-        }
+        };
 
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function (event) {
@@ -88,7 +89,7 @@ function startNewChat(e) {
                 modal.style.display = "none";
                 removeChildren("modal-list");
             }
-        }
+        };
 
         // This adds an eventListener to all the p elements and checks if any p is clicked. 
         // If it is clicked, it toggle's a class on it (Add and remove it).
@@ -116,16 +117,85 @@ function startNewChat(e) {
 }
 
 function sendMesssageToServer(message) {
+    /*fetch('chatServer/api/service/sendMessage', {
+     method: 'POST',
+     body: JSON.stringify(message)
+     })
+     .then(response => response.json())
+     .then(message => {
+     console.log(JSON.stringify(message));
+     //fetch()
+     });*/
+
+
     var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "http://localhost:8080/chatServer/api/service/sendMessage");
+
+    //Send the proper header information along with the request
+    xhttp.setRequestHeader('Content-type', 'application/json');
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-            console.log("Message is updated.");
-        }
-    };
-    xhttp.open("POST", "http://localhost:8080/chatServer/api/service/sendMessage?message=");
-    xhttp.send(message);
-}
+            console.log("Message is sendt to DB:");
+            console.log(xhttp.responseText);
 
+            var response = JSON.parse(xhttp.responseText);
+            //for (var i = 0; i < response.length; i++) {
+                msg = response;
+                dbmessage(msg.message);
+
+            //}
+        }
+
+    };
+
+    console.log("sending message to the server");
+    xhttp.send(JSON.stringify({
+        message: message,
+        sender: sender,
+        receiver: receiver
+    }));
+
+}
+function dbmessage(m) {
+    console.log("Creating a p element with the text: "+ m);
+    //create the elements
+    var p = document.createElement("p");
+
+    //add class to the p element
+    p.classList.add('receiverTextBobble');
+    var textNode = document.createTextNode(m);
+    p.appendChild(textNode);
+    document.getElementById("chatListID").appendChild(p);
+    p.scrollIntoView(false);
+}
+function getMessageFromServer() {
+    if (DEBUG) {
+        console.log("getting messages from sender: " + sender +
+                ", with receiver: " + receiver);
+    }
+
+    var xhttp = new XMLHttpRequest();
+    var url = "api/service/getMessages?sender=" + sender + "&receiver=" + receiver;
+    xhttp.open("GET", url, true);
+
+    //Send the header information along with the request
+    xhttp.setRequestHeader('Content-type', 'application/json');
+
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            console.log("Server says ok");
+        }
+            // Iterate through the messages.
+            var response = JSON.parse(xhttp.responseText);
+            for (var i = 0; i < response.length; i++) {
+                console.log("I am now inside xhttp.onload for-loop");
+                dbmessage(response.message);
+            }
+
+        xhttp.send();
+    };
+
+}
 //Creates a message, and checks if it is an img, and sends it.
 function sendMessage() {
 
@@ -134,13 +204,14 @@ function sendMessage() {
     var textNode = document.createTextNode(textInputValue);
     // Check if input is only space or break line. If not, continue.
     if (/\S/.test(textInputValue)) {
-        
+
+        // send the message to the server.
         sendMesssageToServer(textInputValue);
         //create the elements
-        var p = document.createElement("p");
+//        var p = document.createElement("p");
 
         //add class to the p element
-        p.classList.add('receiverTextBobble');
+//        p.classList.add('receiverTextBobble');
 
 
 
@@ -167,9 +238,9 @@ function sendMessage() {
 
         //Checks if any chars is entered in the input form. If not, do nothing.
         else if (textNode.length >= 1) {
-            p.appendChild(textNode);
-            document.getElementById("chatListID").appendChild(p);
-            p.scrollIntoView(false);
+//            p.appendChild(textNode);
+//            document.getElementById("chatListID").appendChild(p);
+//            p.scrollIntoView(false);
         }
 
         //Clear the input form.
@@ -208,7 +279,7 @@ function addContact() {
             //Eventlistener for clicking on the contacts:
             listItem.addEventListener("click", function e() {
                 if (DEBUG) {
-                    console.log("clicking on " + listItem.innerHTML)
+                    console.log("clicking on " + listItem.innerHTML);
                 }
 
                 contactName = listItem.innerHTML;
@@ -241,16 +312,18 @@ function getContactChat() {
     var activeContact = document.getElementById("activeContact");
     // Get the contact name
     var name = contactName;
+    if (DEBUG) {
+        console.log("Getting contact chat for: " + name);
+    }
     // Change the text in the activeContact element to the contact name
     activeContact.innerHTML = name;
+    receiver = name;
 
     // Changing the chat bobbles:
-
     // Empty the chat window 
-    chatList.innerHTML = ""
+    chatList.innerHTML = "";
 
     createNewChatWindow(name);
-
 
 }
 
@@ -268,7 +341,7 @@ function createNewChatWindow(name) {
     p.appendChild(textNode);
 
     // Attach the p element to the div called chatListID
-    document.getElementById("chatListID").appendChild(p)
+    document.getElementById("chatListID").appendChild(p);
 }
 
 // This function is called when the user has chosen one or more contacts from the modal.
@@ -302,7 +375,7 @@ function startGroupChat(contact) {
             createNewChatWindow(element.innerHTML);
 
             if (DEBUG) {
-                console.log("P element: " + element)
+                console.log("P element: " + element);
                 console.log("element.innerHTML: " + element.innerHTML);
             }
 
@@ -335,7 +408,7 @@ function removeChildren(elementByID) {
 
 // Button functions
 function disableButton(button) {
-    button[button.getAttribute('disabled') ? 'removeAttribute' : 'setAttribute']('disabled', '')
+    button[button.getAttribute('disabled') ? 'removeAttribute' : 'setAttribute']('disabled', '');
     button.classList.add("disabledButton");
 }
 
@@ -343,3 +416,5 @@ function activateButton(button) {
     button.removeAttribute('disabled');
     button.classList.remove("disabledButton");
 }
+
+var timer = setInterval(getMessageFromServer(), 500);
