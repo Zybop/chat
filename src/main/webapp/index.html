@@ -17,8 +17,25 @@
 <body>
     <div class="bg-secondary">
         <!-- Chat window-->
+
         <div class="row">
-            <div class="containerFlex flexbox-1 p-2">
+            <!-- Log in -->
+            <div id="logIn" class="containerFlex">
+                <div class="" style="margin: auto">
+                    <form class="form-signin">
+                        <h2 class="form-signin-heading">Welcome!</h2>
+                        <input type="text" id="inputUserName" class="form-control" placeholder="Write your name here." autofocus="" autocomplete="off" style="background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
+                        <div class="checkbox">
+                            <label>
+                                                <input type="checkbox" value="remember-me"> Remember me
+                                            </label>
+                        </div>
+                        <button id="logInButton" class="btn btn-lg btn-success btn-block" onclick="return logIn()">Log in</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="displayOff containerFlex flexbox-1 p-2">
                 <div style="display: contents; ">
                     <button id="newChatButton" class="btn btn-success btn-lg fas fa-plus" type="button" onclick="return startNewChat(this)"> New chat</button>
                 </div>
@@ -32,7 +49,7 @@
 
             </div>
 
-            <div class="containerFlex flexbox-2 p-2">
+            <div class="displayOff containerFlex flexbox-2 p-2">
                 <div class="chatWindow rounded">
 
                     <ul id="chatWindowID">
@@ -68,9 +85,8 @@
 
         </div>
     </div>
-
+    <script src="chat.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
-<script src="chat.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </html>

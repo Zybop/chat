@@ -4,6 +4,14 @@ html body {
     height: 100%;
 }
 
+.displayOff {
+    display: none !important;
+}
+
+#logIn {
+    margin: auto;
+}
+
 div {
     z-index: 1;
 }
